@@ -1,0 +1,20 @@
+ttypx - query pixel size of terminal
+
+ttypx is a small tool to retrieve the dimensions of the terminal
+in pixels, when the corresponding \e[14t query is supported. It
+outputs two space-separated numbers, or a geometry with the -g
+option.
+
+Options:
+    -g, --geom    Output in geometry format WIDTHxHEIGHT
+    -h, --help    This help text
+
+Examples:
+    $ ttypx
+    1200 600
+    $ read width height < <(ttypx)
+    $ echo width: $width height: $height
+    width: 1200 height: 600
+    $ ttypx -g
+    1200x600
+    $ convert img.jpg -geometry "$(ttypx -g)>" sixel:-
